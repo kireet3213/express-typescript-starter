@@ -1,5 +1,5 @@
 {
-  "name": "express-typescript-starter",
+  "name": "websockets-chat",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,27 +7,17 @@
     "build": "tsc",
     "dev": "nodemon ./src/app.ts",
     "start": "node ./dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier src/**/* --write"
+  },
+  "engines": {
+    "npm": "use pnpm",
+    "yarn": "use pnpm"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "class-validator": "^0.14.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "mysql2": "^3.6.0",
-    "sequelize": "^6.32.1",
-    "sequelize-typescript": "^2.1.5"
-  },
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "@types/node": "^20.4.8",
-    "nodemon": "^3.0.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
+    "prettier": "^3.3.3"
   }
 }

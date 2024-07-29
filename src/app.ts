@@ -1,8 +1,8 @@
 import path from 'path';
 import * as dotenv from 'dotenv';
-dotenv.config({ path: path.join(process.cwd() + '/.env') });
+dotenv.config({ path: path.join('../.env') });
 import express, { Application, NextFunction, Request, Response } from 'express';
-import cors from 'cors'
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import connection from './configuration/database/database.config';
 import userRoutes from './routes/user/user';
@@ -21,23 +21,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send('Express server with TypeScript and ts-node');
+    res.send('Express server with TypeScript');
 });
 
-app.use("/user", userRoutes);
+app.use('/user', userRoutes);
 
 app.use(globalErrorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 connection
-.sync()
-.then(() => {
-    console.log("Database successfully connected");
-})
-.catch((err) => {
-    console.log("Error", err);
-});
+    .sync()
+    .then(() => {
+        console.log('Database successfully connected');
+    })
+    .catch((err) => {
+        console.log('Error', err);
+    });
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
