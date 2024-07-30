@@ -31,7 +31,7 @@ app.use(globalErrorHandler);
 const PORT = process.env.PORT || 8080;
 
 connection
-    .sync()
+    .authenticate()
     .then(() => {
         console.log('Database successfully connected');
     })

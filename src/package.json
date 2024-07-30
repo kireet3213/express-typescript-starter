@@ -7,7 +7,10 @@
         "build": "tsc",
         "dev": "nodemon app.ts",
         "start": "node ./dist/app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "migration:create": "ts-node database/commands/CreateMigration.ts",
+        "check-types": "tsc -p tsconfig.json",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "migration:run": "ts-node database/commands/RunMigrations.ts"
     },
     "engines": {
         "npm": "use pnpm",
@@ -22,9 +25,11 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
+        "glob": "^11.0.0",
         "mysql2": "^3.11.0",
         "sequelize": "^6.37.3",
-        "sequelize-typescript": "^2.1.6"
+        "sequelize-typescript": "^2.1.6",
+        "umzug": "3.8.1"
     },
     "devDependencies": {
         "@types/body-parser": "^1.19.5",
