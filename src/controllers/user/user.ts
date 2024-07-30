@@ -13,7 +13,7 @@ export const registerUser: RequestHandler = catchAsync(
         const registerUser = new RegisterUserDto();
         registerUser.email = req.body.email;
         registerUser.password = req.body.password;
-        registerUser.name = req.body.name;
+        registerUser.name = req.body.name;        
         await validateOrRejectSchema(registerUser);
         const user = await User.build().setAttributes(registerUser).save();
         return res
