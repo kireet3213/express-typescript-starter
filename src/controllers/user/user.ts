@@ -9,7 +9,6 @@ export const registerUser: RequestHandler = catchAsync(
     async (
         req: express.Request,
         res: express.Response,
-        next: express.NextFunction
     ) => {
         const registerUser = new RegisterUserDto();
         registerUser.email = req.body.email;

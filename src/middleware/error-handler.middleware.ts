@@ -3,10 +3,9 @@
 import * as express from 'express';
 
 export function globalErrorHandler(
-    err: any,
+    err: unknown,
     req: express.Request,
-    res: express.Response,
-    next: express.NextFunction
+    res: express.Response
 ): void {
     if (Array.isArray(err)) {
         const errorObj = err.map((e) => {

@@ -44,8 +44,6 @@ if (
 const fileName = fileNameArg.split('=')[1];
 
 function createMigration() {
-    console.log(__dirname);
-
     appendFile(
         `${resolve(__dirname, '..') + '/' + Date.now() + fileName}.ts`,
         migrationContent

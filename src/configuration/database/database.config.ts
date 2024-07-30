@@ -10,6 +10,7 @@ const connection = new Sequelize({
     database: process.env.DB_NAME || 'sample_sequelize',
     logging: (query) => {
         return process.env.DB_LOGGER === 'true'
+            // eslint-disable-next-line no-console
             ? console.log('\x1b[35m%s\x1b[0m', query)
             : undefined;
     },

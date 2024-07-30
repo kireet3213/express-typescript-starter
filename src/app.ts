@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import path from 'path';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: path.join('../.env') });
-import express, { Application, NextFunction, Request, Response } from 'express';
+import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import connection from './configuration/database/database.config';
@@ -20,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
+app.get('/', (req: Request, res: Response) => {
     res.send('Express server with TypeScript');
 });
 
