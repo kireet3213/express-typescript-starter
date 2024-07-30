@@ -33,7 +33,8 @@ const PORT = process.env.PORT || 8080;
 
 connection
     .authenticate()
-    .then(() => {
+    .then(async () => {
+        await connection.sync({ force: false });
         console.log('Database successfully connected');
     })
     .catch((err) => {
