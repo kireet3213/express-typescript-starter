@@ -5,6 +5,7 @@ import {
     DataType,
     PrimaryKey,
     AutoIncrement,
+    Unique,
 } from 'sequelize-typescript';
 
 @Table({
@@ -18,23 +19,24 @@ export class User extends Model {
         type: DataType.BIGINT,
         allowNull: false,
     })
-    id!: number;
+    id: number;
 
     @Column({
         type: DataType.STRING,
         allowNull: false,
     })
-    name!: string;
+    name: string;
+
+    @Unique
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    email: string;
 
     @Column({
         type: DataType.STRING,
         allowNull: false,
     })
-    email!: string;
-
-    @Column({
-        type: DataType.STRING,
-        allowNull: false,
-    })
-    password!: string;
+    password: string;
 }
