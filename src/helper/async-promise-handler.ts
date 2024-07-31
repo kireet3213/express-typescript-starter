@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 //global try catch wrapper
 import * as express from 'express';
 export const catchAsync =
@@ -9,7 +8,7 @@ export const catchAsync =
             next: express.NextFunction
         ) => Promise<unknown>
     ) =>
-    (
+    async (
         req: express.Request,
         res: express.Response,
         next: express.NextFunction

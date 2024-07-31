@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.get('/', (req: Request, res: Response) => {
     res.send('Express server with TypeScript');
 });
