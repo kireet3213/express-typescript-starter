@@ -9,7 +9,8 @@
         "start": "node ./dist/app.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "prettier": "prettier src/**/* --write",
-        "lint": "pnpm -r run lint"
+        "lint": "pnpm -r run lint",
+        "check-types": "pnpm -r run check-types"
     },
     "engines": {
         "npm": "use pnpm",
