@@ -6,11 +6,13 @@ import {
     PrimaryKey,
     AutoIncrement,
     Unique,
+    BeforeCreate,
 } from 'sequelize-typescript';
+import { getHashedPassword } from '../../helper/bcrypt-helpers';
 
 @Table({
     timestamps: true,
-    tableName: 'user',
+    tableName: 'users',
 })
 export class User extends Model {
     @PrimaryKey
@@ -31,6 +33,7 @@ export class User extends Model {
     @Column({
         type: DataType.STRING,
         allowNull: false,
+        unique: true,
     })
     email: string;
 
@@ -39,4 +42,10 @@ export class User extends Model {
         allowNull: false,
     })
     password: string;
+
+    @BeforeCreate
+    static async beforeCreateHook(user: User) {
+        const hashed = await getHashedPassword(user.password);
+        user.password = hashed;
+    }
 }
