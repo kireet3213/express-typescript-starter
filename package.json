@@ -1,23 +1,24 @@
 {
-  "name": "websockets-chat",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "dev": "nodemon ./src/app.ts",
-    "start": "node ./dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier src/**/* --write"
-  },
-  "engines": {
-    "npm": "use pnpm",
-    "yarn": "use pnpm"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "prettier": "^3.3.3"
-  }
+    "name": "websockets-chat",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "dev": "nodemon ./src/app.ts",
+        "start": "node ./dist/app.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prettier": "prettier src/**/* --write",
+        "lint": "pnpm -r run lint"
+    },
+    "engines": {
+        "npm": "use pnpm",
+        "yarn": "use pnpm"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "^3.3.3"
+    }
 }

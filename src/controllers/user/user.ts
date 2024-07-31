@@ -6,14 +6,11 @@ import * as express from 'express';
 import { catchAsync } from '../../helper/async-promise-handler';
 
 export const registerUser: RequestHandler = catchAsync(
-    async (
-        req: express.Request,
-        res: express.Response,
-    ) => {
+    async (req: express.Request, res: express.Response) => {
         const registerUser = new RegisterUserDto();
         registerUser.email = req.body.email;
         registerUser.password = req.body.password;
-        registerUser.name = req.body.name;        
+        registerUser.name = req.body.name;
         await validateOrRejectSchema(registerUser);
         const user = await User.build().setAttributes(registerUser).save();
         return res

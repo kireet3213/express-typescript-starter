@@ -4,6 +4,7 @@ import * as express from 'express';
 
 export function globalErrorHandler(
     err: unknown,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     req: express.Request,
     res: express.Response
 ): void {

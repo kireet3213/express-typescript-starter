@@ -3,7 +3,7 @@ import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
 export default [
-    { files: ['**/*.{js,mjs,cjs,ts}'] },
+    { files: ['src/**/*'] },
     { languageOptions: { globals: globals.browser } },
     ...tseslint.configs.recommended,
     pluginJs.configs.recommended,
@@ -14,10 +14,15 @@ export default [
             },
         },
         rules: {
-            'no-unused-vars': 'warn',
+            'no-unused-vars': 'off',
             'no-undef': 'warn',
             'no-console': 'error',
-            '@typescript-eslint/no-unused-vars': 'warn',
+            '@typescript-eslint/no-unused-vars': [
+                'warn',
+                {
+                    args: 'all',
+                },
+            ],
         },
         ignores: ['node_modules', '../**/dist/*'],
     },
