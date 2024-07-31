@@ -1,5 +1,5 @@
 import { appendFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { join, resolve } from 'node:path';
 
 const migrationContent = `import { DataTypes} from 'sequelize';
 import type { Migration } from '..';
@@ -43,9 +43,10 @@ if (
 }
 const fileName = fileNameArg.split('=')[1];
 
+const migrationsDir = resolve(__dirname, '..', 'migrations');
 function createMigration() {
     appendFile(
-        `${resolve(__dirname, '..') + '/' + Date.now() + fileName}.ts`,
+        `${join(migrationsDir, `${Date.now()}_${fileName}.ts`)}`,
         migrationContent
     );
 }

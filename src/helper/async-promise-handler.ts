@@ -13,5 +13,7 @@ export const catchAsync =
         res: express.Response,
         next: express.NextFunction
     ) => {
-        return Promise.resolve(fn(req, res, next)).catch((err) => next(err));
+        return Promise.resolve(fn(req, res, next)).catch((err) => {
+            next(err);
+        });
     };
