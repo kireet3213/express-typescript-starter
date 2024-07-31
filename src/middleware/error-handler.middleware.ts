@@ -11,6 +11,8 @@ export function globalErrorHandler(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     next: express.NextFunction
 ): void {
+    // eslint-disable-next-line no-console
+    console.error(err);
     if (Array.isArray(err)) {
         const errorObj = err.map((e) => {
             return e.constraints;
