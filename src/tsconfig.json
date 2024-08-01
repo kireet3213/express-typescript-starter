@@ -22,7 +22,8 @@
         "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined'. */,
         "strictFunctionTypes": true /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */,
         // "noUnusedLocals": true,                           /* Enable error reporting when local variables aren't read. */
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
+        "removeComments": true
     },
     "include": ["."],
     "exclude": ["node_modules"]
