@@ -11,7 +11,7 @@
         "check-types": "tsc -p tsconfig.json",
         "test": "echo \"Error: no test specified\" && exit 1",
         "migration:run": "ts-node database/commands/RunMigrations.ts",
-        "lint": "eslint ."
+        "lint": "eslint --config eslint.config.mjs"
     },
     "engines": {
         "npm": "use pnpm",

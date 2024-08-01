@@ -1,29 +1,45 @@
-import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import globals from 'globals';
 
 export default [
-    { files: ['src/**/*'] },
-    { languageOptions: { globals: globals.browser } },
     ...tseslint.configs.recommended,
     pluginJs.configs.recommended,
+    { ignores: ['dist/'] },
     {
+        files: ['**/*.{ts,js}'],
         languageOptions: {
+            ecmaVersion: 'latest',
             globals: {
                 ...globals.node,
+                ...globals.browser,
             },
         },
         rules: {
+            'no-console': 'error',
             'no-unused-vars': 'off',
             'no-undef': 'warn',
-            'no-console': 'error',
             '@typescript-eslint/no-unused-vars': [
                 'warn',
                 {
                     args: 'all',
+                    argsIgnorePattern: '^_',
+                    caughtErrors: 'all',
+                    caughtErrorsIgnorePattern: '^_',
+                    destructuredArrayIgnorePattern: '^_',
+                    varsIgnorePattern: '^_',
+                    ignoreRestSiblings: true,
                 },
             ],
         },
-        ignores: ['node_modules', '../**/dist/*'],
+    },
+    {
+        files: ['dist/**/*.js'],
+        rules: {
+            '@typescript-eslint/no-var-requires': 'off',
+            'no-cond-assign': 'off',
+            'no-console': 'off',
+            'require-yield': 'off',
+        },
     },
 ];
