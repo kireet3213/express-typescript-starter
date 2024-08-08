@@ -1,8 +1,7 @@
 import { Strategy } from 'passport-local';
-
 import { User } from '../database/models/user.model';
 import { comparePassword } from '../helper/bcrypt-helpers';
-import { LoginUserDto } from '../controllers/user/validation-dtos/login-user.dto';
+import { LoginUserDto } from '../controllers/auth/validation-dtos/login-user.dto';
 import { validateOrRejectSchema } from '../helper/validate-schema';
 
 export const localStrategy = new Strategy(

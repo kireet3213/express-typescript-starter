@@ -1,6 +1,5 @@
 import { appendFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
-
 const migrationContent = `import { DataTypes} from 'sequelize';
 import type { Migration } from '..';
 

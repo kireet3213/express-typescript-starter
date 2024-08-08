@@ -2,14 +2,13 @@
 
 import * as express from 'express';
 import { ValidationError } from 'sequelize';
+import { AuthorizationError } from '../helper/error-helpers';
 
 export function globalErrorHandler(
     err: unknown,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    req: express.Request,
+    _req: express.Request,
     res: express.Response,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: express.NextFunction
+    _next: express.NextFunction
 ): void {
     // eslint-disable-next-line no-console
     console.error(err);
@@ -18,6 +17,8 @@ export function globalErrorHandler(
             return e.constraints;
         });
         res.status(401).send(errorObj);
+    } else if (err instanceof AuthorizationError) {
+        res.status(401).json(err);
     } else if (err instanceof ValidationError) {
         const error = JSON.parse(JSON.stringify(err.errors[0]));
         delete error.instance;
