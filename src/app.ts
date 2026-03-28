@@ -1,7 +1,4 @@
-/* eslint-disable no-console */
-import path from 'path';
-import * as dotenv from 'dotenv';
-dotenv.config({ path: path.join('../.env') });
+import './env';
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -13,10 +10,13 @@ import session from 'express-session';
 import authRoutes from './routes/auth/auth';
 import { localStrategy } from './strategies/localStrategy';
 import { verifyToken } from './middleware/verification.middleware';
+import { logger } from './logger';
+import { httpLogger } from './middleware/request-logger.middleware';
 
 const app: Application = express();
 
 app.use(cors());
+app.use(httpLogger);
 // parse requests of content-type - application/json
 
 app.use(bodyParser.json());
@@ -49,11 +49,19 @@ connection
     .authenticate()
     .then(async () => {
         await connection.sync({ force: false });
-        console.log('Database successfully connected');
+        logger.info('Database successfully connected');
     })
     .catch((err) => {
-        console.log('Error', err);
+        logger.error({ err }, 'Database connection failed');
     });
 app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
+    logger.info({ port: Number(PORT) }, 'Server is listening');
+});
+
+process.on('unhandledRejection', (reason) => {
+    logger.error({ err: reason }, 'Unhandled promise rejection');
+});
+
+process.on('uncaughtException', (err) => {
+    logger.fatal({ err }, 'Uncaught exception');
 });
